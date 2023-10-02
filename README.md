@@ -1,1 +1,3 @@
 # PARCIAL-DATOS-CORTE2
+# INTEGRANTES
+## Michell Poveda - SalomonRN
