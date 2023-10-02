@@ -222,10 +222,47 @@ void quicksort(Nodo *&head, Nodo *&primer, Nodo *&ultim)
         }
     }
 
-    quicksort(*&head, primer, laste);    // Llamada recursiva al subarreglo izquierdo
+    quicksort(*&head, primer, laste);  // Llamada recursiva al subarreglo izquierdo
     quicksort(*&head, current, ultim); // Llamada recursiva al subarreglo derecho
 }
+void buscarListaBinaria(Nodo *lista, int n)
+{
+    Nodo *inicio = lista;
+    Nodo *fin = nullptr;
 
+    while (inicio != fin)
+    {
+        Nodo *actual = inicio;
+        int count = 0;
+        while (actual != fin)
+        {
+            actual = actual->siguiente;
+            count++;
+        }
+
+        actual = inicio;
+        for (int i = 0; i < count / 2; i++)
+        {
+            actual = actual->siguiente;
+        }
+
+        if (actual->dato == n)
+        {
+            cout << "Elemento encontrado: " << n << endl;
+            return;
+        }
+        else if (actual->dato < n)
+        {
+            inicio = actual->siguiente;
+        }
+        else
+        {
+            fin = actual;
+        }
+    }
+
+    cout << "Elemento no encontrado -1: " << n << endl;
+}
 int main()
 {
     Tree *root = NULL;
@@ -241,6 +278,7 @@ int main()
         cout << "3. Crear Nodo Lista" << endl;
         cout << "4. Mostrar Lista" << endl;
         cout << "5. Ordenar Lista" << endl;
+        cout << "6. Ordenar Lista" << endl;
         cout << "Ingrese la opcion que desea: ";
         cin >> choise;
         switch (choise)
@@ -268,6 +306,11 @@ int main()
             break;
         case 5:
             quicksort(*&head, *&head, ultimo);
+            break;
+        case 6:
+            cout << "Numero a bsucar: ";
+            cin >> value;
+            buscarListaBinaria(*&head, value);
             break;
         case 99:
             create(root, 9);
